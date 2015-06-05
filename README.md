@@ -2,3 +2,9 @@
 -----------
 
 9YG0E6r
+
+---
+
+Action             | Key
+-------------------|----
+Randomize Vertices | R

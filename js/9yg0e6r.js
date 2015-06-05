@@ -59,19 +59,38 @@ function draw(){
 
 function logic(){
     for(var vertex in vertices){
-        vertices[vertex]['loop'] += vertices[vertex]['dl'];
+        vertices[vertex]['loop'] += vertices[vertex]['speed'];
         if(vertices[vertex]['loop'] > 359){
-            vertices[vertex]['loop'] = 0;
+            vertices[vertex]['loop'] -= 360;
+        }else if(vertices[vertex]['loop']){
+            vertices[vertex]['loop'] += 360;
         }
+
         vertices[vertex]['dx'] =
           vertices[vertex]['x']
-          + vertices[vertex]['r']
-          * Math.cos(vertices[vertex]['loop'] * (Math.PI / 180));
+          + vertices[vertex]['radius']
+          * Math.cos(vertices[vertex]['loop'] * pi_divide_180);
         vertices[vertex]['dy'] =
           vertices[vertex]['y']
-          + vertices[vertex]['r']
-          * Math.sin(vertices[vertex]['loop'] * (Math.PI / 180))
+          + vertices[vertex]['radius']
+          * Math.sin(vertices[vertex]['loop'] * pi_divide_180)
     }
+}
+
+function randomize(){
+    for(var vertex in vertices){
+        vertices[vertex] = {
+          'dx': 0,
+          'dy': 0,
+          'loop': Math.floor(Math.random() * 50) + 50,
+          'parent': vertex - 1,
+          'radius': Math.random() * 20 + 5,
+          'speed': Math.floor(Math.random() * 10) - 5 * 2,
+          'x': Math.floor(Math.random() * 500) - 250,
+          'y': Math.floor(Math.random() * 500) - 250,
+        };
+    }
+    vertices[0]['parent'] = vertices.length - 1;
 }
 
 function resize(){
@@ -90,28 +109,29 @@ var buffer = document.getElementById('buffer').getContext('2d');
 var canvas = document.getElementById('canvas').getContext('2d');
 var height = 0;
 var loop = 0;
+var pi_divide_180 = Math.PI / 180;
 var vertices = [];
 var width = 0;
 var x = 0;
 var y = 0;
 
+window.onkeydown = function(e){
+    var key = e.keyCode || e.which;
+
+    // R: randomize vertices.
+    if(key == 82){
+        randomize();
+    }
+};
+
 window.onload = function(e){
     resize();
 
-    var loop_counter = 9;
+    var loop_counter = 23;
     do{
-        vertices.push({
-          'dl': ((Math.floor(Math.random() * 2) - 1) * 10 || 10),
-          'dx': 0,
-          'dy': 0,
-          'loop': Math.floor(Math.random() * 50) + 50,
-          'parent': vertices.length - 1,
-          'r': Math.random() * 10 + 5,
-          'x': Math.floor(Math.random() * 300) - 150,
-          'y': Math.floor(Math.random() * 300) - 150,
-        });
+        vertices.push({});
     }while(loop_counter--);
-    vertices[0]['parent'] = vertices.length - 1;
+    randomize();
 
     window.requestAnimationFrame(draw);
     window.setInterval(
