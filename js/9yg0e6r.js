@@ -108,7 +108,6 @@ function resize(){
 var buffer = document.getElementById('buffer').getContext('2d');
 var canvas = document.getElementById('canvas').getContext('2d');
 var height = 0;
-var loop = 0;
 var pi_divide_180 = Math.PI / 180;
 var vertices = [];
 var width = 0;
