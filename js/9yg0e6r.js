@@ -66,14 +66,16 @@ function logic(){
             vertices[vertex]['loop'] += 360;
         }
 
+        var rotation = vertices[vertex]['loop'] * degree;
+
         vertices[vertex]['dx'] =
           vertices[vertex]['x']
           + vertices[vertex]['radius']
-          * Math.cos(vertices[vertex]['loop'] * pi_divide_180);
+          * Math.cos(rotation);
         vertices[vertex]['dy'] =
           vertices[vertex]['y']
           + vertices[vertex]['radius']
-          * Math.sin(vertices[vertex]['loop'] * pi_divide_180)
+          * Math.sin(rotation)
     }
 }
 
@@ -107,8 +109,8 @@ function resize(){
 
 var buffer = document.getElementById('buffer').getContext('2d');
 var canvas = document.getElementById('canvas').getContext('2d');
+var degree = Math.PI / 180;
 var height = 0;
-var pi_divide_180 = Math.PI / 180;
 var vertices = [];
 var width = 0;
 var x = 0;
