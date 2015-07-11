@@ -118,14 +118,9 @@ var width = 0;
 var x = 0;
 var y = 0;
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    // R: randomize vertices.
-    if(key == 82){
-        randomize();
-    }
-};
+window.onkeydown =
+  window.onmousedown =
+  window.ontouchstart = randomize;
 
 window.onload = function(e){
     resize();
