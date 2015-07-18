@@ -7,4 +7,4 @@
 
 Action             | Key
 -------------------|----
-Randomize Vertices | R
+Randomize Vertices | Any
