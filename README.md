@@ -7,4 +7,7 @@
 
 Action             | Key
 -------------------|----
+Line Width --      | -
+Line Width ++      | +
 Randomize Vertices | Any
+Reset Line Width   | ESC

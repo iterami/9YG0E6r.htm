@@ -8,6 +8,10 @@ function draw(){
       height
     );
 
+    buffer.lineJoin = 'round';
+    buffer.lineWidth = lineWidth;
+    buffer.strokeStyle = '#fff';
+
     buffer.save()
 
     buffer.translate(
@@ -15,7 +19,6 @@ function draw(){
       y
     );
 
-    buffer.strokeStyle = '#fff';
     for(var vertex in vertices){
         buffer.beginPath();
         buffer.moveTo(
@@ -117,13 +120,37 @@ var canvas = document.getElementById('canvas').getContext('2d', {
 });
 var degree = Math.PI / 180;
 var height = 0;
+var lineWidth = 1;
 var vertices = [];
 var width = 0;
 var x = 0;
 var y = 0;
 
-window.onkeydown =
-  window.onmousedown =
+window.onkeydown = function(e){
+    var key = e.keyCode || e.which;
+
+    // +: increase lineWidth.
+    if(key === 187){
+        lineWidth += 1;
+
+    // -: decrease lineWidth.
+    }else if(key === 189){
+        lineWidth = Math.max(
+          lineWidth - 1,
+          1
+        );
+
+    // ESC: lineWidth = 0;
+    }else if(key === 27){
+        lineWidth = 0;
+
+    // else: randomize();
+    }else{
+        randomize();
+    }
+};
+
+window.onmousedown =
   window.ontouchstart = randomize;
 
 window.onload = function(e){
