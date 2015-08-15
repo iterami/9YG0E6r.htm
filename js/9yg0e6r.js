@@ -142,7 +142,7 @@ window.onkeydown = function(e){
 
     // ESC: lineWidth = 0;
     }else if(key === 27){
-        lineWidth = 0;
+        lineWidth = 1;
 
     // else: randomize();
     }else{
