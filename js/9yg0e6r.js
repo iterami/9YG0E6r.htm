@@ -8,9 +8,7 @@ function draw(){
       height
     );
 
-    buffer.lineJoin = 'round';
     buffer.lineWidth = lineWidth;
-    buffer.strokeStyle = '#fff';
 
     buffer.save()
 
@@ -155,6 +153,9 @@ window.onmousedown =
 
 window.onload = function(e){
     resize();
+
+    buffer.lineJoin = 'round';
+    buffer.strokeStyle = '#fff';
 
     var loop_counter = 23;
     do{
