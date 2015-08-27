@@ -108,6 +108,9 @@ function resize(){
     document.getElementById('buffer').width = width;
     document.getElementById('canvas').width = width;
     x = width / 2;
+
+    buffer.lineJoin = 'round';
+    buffer.strokeStyle = '#fff';
 }
 
 var buffer = document.getElementById('buffer').getContext('2d', {
@@ -153,9 +156,6 @@ window.onmousedown =
 
 window.onload = function(e){
     resize();
-
-    buffer.lineJoin = 'round';
-    buffer.strokeStyle = '#fff';
 
     var loop_counter = 23;
     do{
