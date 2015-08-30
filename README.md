@@ -5,9 +5,11 @@
 
 ---
 
-Action             | Key
--------------------|----
-Line Width --      | -
-Line Width ++      | +
-Randomize Vertices | Any
-Reset Line Width   | ESC
+Action                | Key
+----------------------|----
+Line Width --         | A
+Line Width ++         | D
+Number of Vertices -- | S
+Number of Vertices ++ | W
+Randomize Vertices    | Any
+Reset Line Width      | ESC

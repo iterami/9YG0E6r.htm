@@ -45,6 +45,19 @@ function draw(){
 
     buffer.restore();
 
+    // Draw vertices_amount and lineWidth.
+    buffer.fillStyle = '#fff';
+    buffer.fillText(
+      vertices_amount,
+      0,
+      25
+    );
+    buffer.fillText(
+      buffer.lineWidth,
+      0,
+      50
+    );
+
     canvas.clearRect(
       0,
       0,
@@ -83,6 +96,13 @@ function logic(){
 }
 
 function randomize(){
+    vertices.length = 0;
+
+    var loop_counter = vertices_amount - 1;
+    do{
+        vertices.push({});
+    }while(loop_counter--);
+
     for(var vertex in vertices){
         vertices[vertex] = {
           'dx': 0,
@@ -109,8 +129,11 @@ function resize(){
     document.getElementById('canvas').width = width;
     x = width / 2;
 
+    buffer.font = '23pt sans-serif';
     buffer.lineJoin = 'round';
     buffer.strokeStyle = '#fff';
+
+    randomize();
 }
 
 var buffer = document.getElementById('buffer').getContext('2d', {
@@ -123,6 +146,7 @@ var degree = Math.PI / 180;
 var height = 0;
 var lineWidth = 1;
 var vertices = [];
+var vertices_amount = 23;
 var width = 0;
 var x = 0;
 var y = 0;
@@ -130,20 +154,32 @@ var y = 0;
 window.onkeydown = function(e){
     var key = e.keyCode || e.which;
 
-    // +: increase lineWidth.
-    if(key === 187){
-        lineWidth += 1;
-
-    // -: decrease lineWidth.
-    }else if(key === 189){
+    // A: decrease lineWidth.
+    if(key === 65){
         lineWidth = Math.max(
           lineWidth - 1,
           1
         );
 
+    // D: increase lineWidth.
+    }else if(key === 68){
+        lineWidth += 1;
+
+    // S: decrease vertices_amount.
+    }else if(key === 83){
+        vertices_amount = Math.max(
+          vertices_amount - 1,
+          2
+        );
+
+    // W: increase vertices_amount.
+    }else if(key === 87){
+        vertices_amount += 1;
+
     // ESC: lineWidth = 0;
     }else if(key === 27){
         lineWidth = 1;
+        vertices_amount = 23;
 
     // else: randomize();
     }else{
@@ -156,12 +192,6 @@ window.onmousedown =
 
 window.onload = function(e){
     resize();
-
-    var loop_counter = 23;
-    do{
-        vertices.push({});
-    }while(loop_counter--);
-    randomize();
 
     window.requestAnimationFrame(draw);
     window.setInterval(
