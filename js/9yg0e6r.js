@@ -176,15 +176,13 @@ window.onkeydown = function(e){
     }else if(key === 87){
         vertices_amount += 1;
 
-    // ESC: lineWidth = 0;
+    // ESC: reset.
     }else if(key === 27){
         lineWidth = 1;
         vertices_amount = 23;
-
-    // else: randomize();
-    }else{
-        randomize();
     }
+
+    randomize();
 };
 
 window.onmousedown =
