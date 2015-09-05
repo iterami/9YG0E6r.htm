@@ -160,10 +160,12 @@ window.onkeydown = function(e){
           lineWidth - 1,
           1
         );
+        return;
 
     // D: increase lineWidth.
     }else if(key === 68){
         lineWidth += 1;
+        return;
 
     // S: decrease vertices_amount.
     }else if(key === 83){
