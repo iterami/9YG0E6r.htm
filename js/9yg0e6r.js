@@ -37,7 +37,6 @@ function draw(){
     }
 
     // Draw vertices_amount and lineWidth.
-    buffer.fillStyle = '#fff';
     buffer.fillText(
       vertices_amount,
       0,
@@ -69,6 +68,7 @@ function logic(){
         vertices[vertex]['loop'] += vertices[vertex]['speed'];
         if(vertices[vertex]['loop'] > 359){
             vertices[vertex]['loop'] -= 360;
+
         }else if(vertices[vertex]['loop']){
             vertices[vertex]['loop'] += 360;
         }
@@ -84,7 +84,7 @@ function logic(){
           y
           + vertices[vertex]['y']
           + vertices[vertex]['radius']
-          * Math.sin(rotation)
+          * Math.sin(rotation);
     }
 }
 
@@ -126,6 +126,7 @@ function resize(){
     buffer.lineJoin = 'round';
     buffer.strokeStyle = '#fff';
 
+    buffer.fillStyle = '#fff';
     randomize();
 }
 
