@@ -122,11 +122,11 @@ function resize(){
     document.getElementById('canvas').width = width;
     x = width / 2;
 
+    buffer.fillStyle = '#fff';
     buffer.font = '23pt sans-serif';
     buffer.lineJoin = 'round';
     buffer.strokeStyle = '#fff';
 
-    buffer.fillStyle = '#fff';
     randomize();
 }
 
