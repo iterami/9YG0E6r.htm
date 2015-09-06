@@ -10,13 +10,6 @@ function draw(){
 
     buffer.lineWidth = lineWidth;
 
-    buffer.save()
-
-    buffer.translate(
-      x,
-      y
-    );
-
     for(var vertex in vertices){
         buffer.beginPath();
         buffer.moveTo(
@@ -42,8 +35,6 @@ function draw(){
         buffer.closePath();
         buffer.stroke();
     }
-
-    buffer.restore();
 
     // Draw vertices_amount and lineWidth.
     buffer.fillStyle = '#fff';
@@ -85,11 +76,13 @@ function logic(){
         var rotation = vertices[vertex]['loop'] * degree;
 
         vertices[vertex]['dx'] =
-          vertices[vertex]['x']
+          x
+          + vertices[vertex]['x']
           + vertices[vertex]['radius']
           * Math.cos(rotation);
         vertices[vertex]['dy'] =
-          vertices[vertex]['y']
+          y
+          + vertices[vertex]['y']
           + vertices[vertex]['radius']
           * Math.sin(rotation)
     }
