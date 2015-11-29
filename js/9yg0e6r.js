@@ -93,22 +93,19 @@ function randomize(){
 
     var loop_counter = vertices_amount - 1;
     do{
-        vertices.push({});
-    }while(loop_counter--);
-
-    for(var vertex in vertices){
-        vertices[vertex] = {
+        vertices.push({
           'dx': 0,
           'dy': 0,
           'loop': Math.floor(Math.random() * 50) + 50,
-          'parent': vertex - 1,
+          'parent': vertices_amount - loop_counter,
           'radius': Math.random() * 20 + 5,
           'speed': Math.floor(Math.random() * 10) - 5 * 2,
           'x': Math.floor(Math.random() * 500) - 250,
           'y': Math.floor(Math.random() * 500) - 250,
-        };
-    }
-    vertices[0]['parent'] = vertices.length - 1;
+        });
+    }while(loop_counter--);
+
+    vertices[vertices.length - 1]['parent'] = 0;
 }
 
 function resize(){
