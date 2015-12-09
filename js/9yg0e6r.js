@@ -8,8 +8,6 @@ function draw(){
       height
     );
 
-    buffer.lineWidth = lineWidth;
-
     for(var vertex in vertices){
         buffer.beginPath();
         buffer.moveTo(
@@ -135,7 +133,6 @@ var canvas = document.getElementById('canvas').getContext('2d', {
 });
 var degree = Math.PI / 180;
 var height = 0;
-var lineWidth = 1;
 var vertices = [];
 var vertices_amount = 23;
 var width = 0;
@@ -145,17 +142,17 @@ var y = 0;
 window.onkeydown = function(e){
     var key = e.keyCode || e.which;
 
-    // A: decrease lineWidth.
+    // A: decrease buffer.lineWidth.
     if(key === 65){
-        lineWidth = Math.max(
-          lineWidth - 1,
+        buffer.lineWidth = Math.max(
+          buffer.lineWidth - 1,
           1
         );
         return;
 
-    // D: increase lineWidth.
+    // D: increase buffer.lineWidth.
     }else if(key === 68){
-        lineWidth += 1;
+        buffer.lineWidth += 1;
         return;
 
     // S: decrease vertices_amount.
@@ -171,7 +168,7 @@ window.onkeydown = function(e){
 
     // ESC: reset.
     }else if(key === 27){
-        lineWidth = 1;
+        buffer.lineWidth = 1;
         vertices_amount = 23;
     }
 
