@@ -103,7 +103,7 @@ function randomize(){
         });
     }while(loop_counter--);
 
-    vertices[vertices.length - 1]['parent'] = 0;
+    vertices[vertices_amount - 1]['parent'] = 0;
 }
 
 function resize(){
