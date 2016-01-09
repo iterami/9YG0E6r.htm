@@ -175,9 +175,6 @@ window.onkeydown = function(e){
     randomize();
 };
 
-window.onmousedown =
-  window.ontouchstart = randomize;
-
 window.onload = function(e){
     resize();
 
@@ -188,4 +185,6 @@ window.onload = function(e){
     );
 };
 
+window.onmousedown = randomize;
 window.onresize = resize;
+window.ontouchstart = randomize;
