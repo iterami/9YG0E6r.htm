@@ -67,7 +67,7 @@ function logic(){
         if(vertices[vertex]['loop'] > 359){
             vertices[vertex]['loop'] -= 360;
 
-        }else if(vertices[vertex]['loop']){
+        }else if(vertices[vertex]['loop'] < 0){
             vertices[vertex]['loop'] += 360;
         }
 
