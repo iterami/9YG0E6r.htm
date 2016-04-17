@@ -136,5 +136,4 @@ window.onkeydown = function(e){
 
 window.onload = init_canvas;
 window.onmousedown = randomize;
-window.onresize = resize;
 window.ontouchstart = randomize;
