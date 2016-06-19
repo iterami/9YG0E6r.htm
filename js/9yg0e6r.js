@@ -98,42 +98,52 @@ var degree = Math.PI / 180;
 var vertices = [];
 var vertices_amount = 23;
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    // A: decrease buffer.lineWidth.
-    if(key === 65){
-        buffer.lineWidth = Math.max(
-          buffer.lineWidth - 1,
-          1
-        );
-        return;
-
-    // D: increase buffer.lineWidth.
-    }else if(key === 68){
-        buffer.lineWidth += 1;
-        return;
-
-    // S: decrease vertices_amount.
-    }else if(key === 83){
-        vertices_amount = Math.max(
-          vertices_amount - 1,
-          2
-        );
-
-    // W: increase vertices_amount.
-    }else if(key === 87){
-        vertices_amount += 1;
-
-    // ESC: reset.
-    }else if(key === 27){
-        buffer.lineWidth = 1;
-        vertices_amount = 23;
-    }
-
-    randomize();
-};
-
-window.onload = init_canvas;
-window.onmousedown = randomize;
-window.ontouchstart = randomize;
+window.onload = function(e){
+    init_canvas();
+    init_input(
+      {
+        27: {
+          'todo': function(){
+              buffer.lineWidth = 1;
+              vertices_amount = 23;
+              randomize();
+          },
+        },
+        65: {
+          'todo': function(){
+              buffer.lineWidth = Math.max(
+                buffer.lineWidth - 1,
+                1
+              );
+          },
+        },
+        68: {
+          'todo': function(){
+              buffer.lineWidth += 1;
+          },
+        },
+        83: {
+          'todo': function(){
+              vertices_amount = Math.max(
+                vertices_amount - 1,
+                2
+              );
+              randomize();
+          },
+        },
+        87: {
+          'todo': function(){
+              vertices_amount += 1;
+              randomize();
+          },
+        },
+      },
+      {
+        'mousedown': {
+          'todo': function(){
+              randomize();
+          },
+        },
+      }
+    );
+}
