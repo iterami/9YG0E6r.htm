@@ -146,4 +146,4 @@ window.onload = function(e){
         },
       }
     );
-}
+};
