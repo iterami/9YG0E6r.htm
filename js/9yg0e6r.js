@@ -140,9 +140,7 @@ window.onload = function(e){
       },
       {
         'mousedown': {
-          'todo': function(){
-              randomize();
-          },
+          'todo': randomize,
         },
       }
     );
