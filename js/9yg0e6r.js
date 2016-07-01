@@ -87,7 +87,6 @@ function randomize(){
 
 function resize_logic(){
     buffer.fillStyle = '#fff';
-    buffer.font = font;
     buffer.lineJoin = 'round';
     buffer.strokeStyle = '#fff';
 
