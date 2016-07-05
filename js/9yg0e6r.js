@@ -104,8 +104,10 @@ window.onload = function(e){
         27: {
           'todo': function(){
               buffer.lineWidth = 1;
-              vertices_amount = 23;
-              randomize();
+              if(vertices_amount !== 23){
+                vertices_amount = 23;
+                randomize();
+              }
           },
         },
         65: {
