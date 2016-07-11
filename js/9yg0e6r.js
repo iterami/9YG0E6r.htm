@@ -2,39 +2,39 @@
 
 function draw_logic(){
     for(var vertex in vertices){
-        buffer.beginPath();
-        buffer.moveTo(
+        canvas_buffer.beginPath();
+        canvas_buffer.moveTo(
           vertices[vertex]['dx'],
           vertices[vertex]['dy']
         );
-        buffer.lineTo(
+        canvas_buffer.lineTo(
           vertices[vertex]['dx'],
           vertices[vertices[vertex]['parent']]['dy']
         );
-        buffer.closePath();
-        buffer.stroke();
+        canvas_buffer.closePath();
+        canvas_buffer.stroke();
 
-        buffer.beginPath();
-        buffer.moveTo(
+        canvas_buffer.beginPath();
+        canvas_buffer.moveTo(
           vertices[vertex]['dx'],
           vertices[vertices[vertex]['parent']]['dy']
         );
-        buffer.lineTo(
+        canvas_buffer.lineTo(
           vertices[vertices[vertex]['parent']]['dx'],
           vertices[vertices[vertex]['parent']]['dy']
         );
-        buffer.closePath();
-        buffer.stroke();
+        canvas_buffer.closePath();
+        canvas_buffer.stroke();
     }
 
     // Draw vertices_amount and lineWidth.
-    buffer.fillText(
+    canvas_buffer.fillText(
       vertices_amount,
       0,
       25
     );
-    buffer.fillText(
-      buffer.lineWidth,
+    canvas_buffer.fillText(
+      canvas_buffer.lineWidth,
       0,
       50
     );
@@ -53,12 +53,12 @@ function logic(){
         var rotation = vertices[vertex]['loop'] * degree;
 
         vertices[vertex]['dx'] =
-          x
+          canvas_x
           + vertices[vertex]['x']
           + vertices[vertex]['radius']
           * Math.cos(rotation);
         vertices[vertex]['dy'] =
-          y
+          canvas_y
           + vertices[vertex]['y']
           + vertices[vertex]['radius']
           * Math.sin(rotation);
@@ -86,9 +86,9 @@ function randomize(){
 }
 
 function resize_logic(){
-    buffer.fillStyle = '#fff';
-    buffer.lineJoin = 'round';
-    buffer.strokeStyle = '#fff';
+    canvas_buffer.fillStyle = '#fff';
+    canvas_buffer.lineJoin = 'round';
+    canvas_buffer.strokeStyle = '#fff';
 
     randomize();
 }
@@ -98,12 +98,12 @@ var vertices = [];
 var vertices_amount = 23;
 
 window.onload = function(e){
-    init_canvas();
+    canvas_init();
     input_init(
       {
         27: {
           'todo': function(){
-              buffer.lineWidth = 1;
+              canvas_buffer.lineWidth = 1;
               if(vertices_amount !== 23){
                 vertices_amount = 23;
                 randomize();
@@ -112,15 +112,15 @@ window.onload = function(e){
         },
         65: {
           'todo': function(){
-              buffer.lineWidth = Math.max(
-                buffer.lineWidth - 1,
+              canvas_buffer.lineWidth = Math.max(
+                canvas_buffer.lineWidth - 1,
                 1
               );
           },
         },
         68: {
           'todo': function(){
-              buffer.lineWidth += 1;
+              canvas_buffer.lineWidth += 1;
           },
         },
         83: {
