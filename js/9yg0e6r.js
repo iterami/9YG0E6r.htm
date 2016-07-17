@@ -73,12 +73,12 @@ function randomize(){
         vertices.push({
           'dx': 0,
           'dy': 0,
-          'loop': Math.floor(Math.random() * 50) + 50,
+          'loop': random_integer(50) + 50,
           'parent': vertices_amount - loop_counter,
           'radius': Math.random() * 20 + 5,
-          'speed': Math.floor(Math.random() * 10) - 5 * 2,
-          'x': Math.floor(Math.random() * 500) - 250,
-          'y': Math.floor(Math.random() * 500) - 250,
+          'speed': random_integer(10) - 5 * 2,
+          'x': random_integer(500) - 250,
+          'y': random_integer(500) - 250,
         });
     }while(loop_counter--);
 
