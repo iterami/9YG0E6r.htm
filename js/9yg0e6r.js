@@ -93,7 +93,6 @@ function resize_logic(){
     randomize();
 }
 
-var degree = Math.PI / 180;
 var vertices = [];
 var vertices_amount = 23;
 
