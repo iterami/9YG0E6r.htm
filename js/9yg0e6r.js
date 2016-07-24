@@ -50,7 +50,7 @@ function logic(){
             vertices[vertex]['loop'] += 360;
         }
 
-        var rotation = vertices[vertex]['loop'] * degree;
+        var rotation = vertices[vertex]['loop'] * math_degree;
 
         vertices[vertex]['dx'] =
           canvas_x
