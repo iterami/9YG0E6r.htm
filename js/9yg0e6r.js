@@ -2,29 +2,36 @@
 
 function draw_logic(){
     for(var vertex in vertices){
-        canvas_buffer.beginPath();
-        canvas_buffer.moveTo(
-          vertices[vertex]['dx'],
-          vertices[vertex]['dy']
+        canvas_draw_path(
+          [
+            {
+              'type': 'moveTo',
+              'x': vertices[vertex]['dx'],
+              'y': vertices[vertex]['dy'],
+            },
+            {
+              'x': vertices[vertex]['dx'],
+              'y': vertices[vertices[vertex]['parent']]['dy'],
+            },
+          ],
+          {},
+          'stroke'
         );
-        canvas_buffer.lineTo(
-          vertices[vertex]['dx'],
-          vertices[vertices[vertex]['parent']]['dy']
+        canvas_draw_path(
+          [
+            {
+              'type': 'moveTo',
+              'x': vertices[vertex]['dx'],
+              'y': vertices[vertices[vertex]['parent']]['dy'],
+            },
+            {
+              'x': vertices[vertices[vertex]['parent']]['dx'],
+              'y': vertices[vertices[vertex]['parent']]['dy'],
+            },
+          ],
+          {},
+          'stroke'
         );
-        canvas_buffer.closePath();
-        canvas_buffer.stroke();
-
-        canvas_buffer.beginPath();
-        canvas_buffer.moveTo(
-          vertices[vertex]['dx'],
-          vertices[vertices[vertex]['parent']]['dy']
-        );
-        canvas_buffer.lineTo(
-          vertices[vertices[vertex]['parent']]['dx'],
-          vertices[vertices[vertex]['parent']]['dy']
-        );
-        canvas_buffer.closePath();
-        canvas_buffer.stroke();
     }
 
     // Draw vertices_amount and lineWidth.
