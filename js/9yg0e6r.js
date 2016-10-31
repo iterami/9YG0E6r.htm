@@ -117,6 +117,7 @@ window.onload = function(e){
           },
         },
         65: {
+          'solo': true,
           'todo': function(){
               canvas_buffer.lineWidth = Math.max(
                 canvas_buffer.lineWidth - 1,
@@ -125,6 +126,7 @@ window.onload = function(e){
           },
         },
         68: {
+          'solo': true,
           'todo': function(){
               canvas_buffer.lineWidth += 1;
           },
@@ -143,6 +145,9 @@ window.onload = function(e){
               vertices_amount += 1;
               randomize();
           },
+        },
+        'all': {
+          'todo': randomize,
         },
       },
       {
