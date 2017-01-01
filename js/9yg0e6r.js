@@ -80,12 +80,20 @@ function randomize(){
         vertices.push({
           'dx': 0,
           'dy': 0,
-          'loop': random_integer(50) + 50,
+          'loop': random_integer({
+            'max': 50,
+          }) + 50,
           'parent': vertices_amount - loop_counter,
           'radius': Math.random() * 20 + 5,
-          'speed': random_integer(10) - 5 * 2,
-          'x': random_integer(500) - 250,
-          'y': random_integer(500) - 250,
+          'speed': random_integer({
+            'max': 10,
+          }) - 5 * 2,
+          'x': random_integer({
+            'max': 500,
+          }) - 250,
+          'y': random_integer({
+            'max': 500,
+          }) - 250,
         });
     }while(loop_counter--);
 
