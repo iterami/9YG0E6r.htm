@@ -113,8 +113,8 @@ var vertices_amount = 23;
 
 window.onload = function(e){
     canvas_init();
-    input_init(
-      {
+    input_init({
+      'keybinds': {
         27: {
           'todo': function(){
               canvas_buffer.lineWidth = 1;
@@ -158,10 +158,10 @@ window.onload = function(e){
           'todo': randomize,
         },
       },
-      {
+      'mousebinds': {
         'mousedown': {
           'todo': randomize,
         },
-      }
-    );
+      },
+    });
 };
