@@ -2,8 +2,9 @@
 
 function draw_logic(){
     for(var vertex in vertices){
-        canvas_draw_path(
-          [
+        canvas_draw_path({
+          'style': 'stroke',
+          'vertices': [
             {
               'type': 'moveTo',
               'x': vertices[vertex]['dx'],
@@ -14,11 +15,9 @@ function draw_logic(){
               'y': vertices[vertices[vertex]['parent']]['dy'],
             },
           ],
-          {},
-          'stroke'
-        );
-        canvas_draw_path(
-          [
+        });
+        canvas_draw_path({
+          'vertices': [
             {
               'type': 'moveTo',
               'x': vertices[vertex]['dx'],
@@ -29,9 +28,8 @@ function draw_logic(){
               'y': vertices[vertices[vertex]['parent']]['dy'],
             },
           ],
-          {},
-          'stroke'
-        );
+          'style': 'stroke',
+        });
     }
 
     // Draw vertices_amount and lineWidth.
