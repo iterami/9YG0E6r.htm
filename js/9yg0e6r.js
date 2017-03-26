@@ -79,19 +79,19 @@ function randomize(){
           'dx': 0,
           'dy': 0,
           'loop': random_integer({
-            'max': 50,
-          }) + 50,
+            'max': 360,
+          }),
           'parent': vertices_amount - loop_counter,
-          'radius': Math.random() * 20 + 5,
+          'radius': Math.random() * properties['radius'] + 5,
           'speed': random_integer({
-            'max': 10,
-          }) - 5 * 2,
+            'max': properties['speed'],
+          }) - properties['speed'] / 2,
           'x': random_integer({
-            'max': 500,
-          }) - 250,
+            'max': properties['x'],
+          }) - properties['x'] / 2,
           'y': random_integer({
-            'max': 500,
-          }) - 250,
+            'max': properties['y'],
+          }) - properties['y'] / 2,
         });
     }while(loop_counter--);
 
@@ -106,6 +106,12 @@ function resize_logic(){
     randomize();
 }
 
+var properties = {
+  'radius': 20,
+  'speed': 15,
+  'x': 500,
+  'y': 500,
+};
 var vertices = [];
 var vertices_amount = 23;
 
