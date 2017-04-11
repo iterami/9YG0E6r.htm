@@ -17,6 +17,7 @@ function draw_logic(){
           ],
         });
         canvas_draw_path({
+          'style': 'stroke',
           'vertices': [
             {
               'type': 'moveTo',
@@ -28,7 +29,6 @@ function draw_logic(){
               'y': vertices[vertices[vertex]['parent']]['dy'],
             },
           ],
-          'style': 'stroke',
         });
     }
 
