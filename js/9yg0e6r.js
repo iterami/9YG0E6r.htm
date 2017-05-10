@@ -78,18 +78,18 @@ function randomize(){
         vertices.push({
           'dx': 0,
           'dy': 0,
-          'loop': random_integer({
+          'loop': core_random_integer({
             'max': 360,
           }),
           'parent': vertices_amount - loop_counter,
           'radius': Math.random() * properties['radius'] + 5,
-          'speed': random_integer({
+          'speed': core_random_integer({
             'max': properties['speed'],
           }) - properties['speed'] / 2,
-          'x': random_integer({
+          'x': core_random_integer({
             'max': properties['x'],
           }) - properties['x'] / 2,
-          'y': random_integer({
+          'y': core_random_integer({
             'max': properties['y'],
           }) - properties['y'] / 2,
         });
