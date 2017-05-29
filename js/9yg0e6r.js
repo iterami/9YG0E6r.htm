@@ -98,26 +98,9 @@ function randomize(){
     vertices[vertices_amount - 1]['parent'] = 0;
 }
 
-function resize_logic(){
-    canvas_buffer.fillStyle = '#fff';
-    canvas_buffer.lineJoin = 'round';
-    canvas_buffer.strokeStyle = '#fff';
-
-    randomize();
-}
-
-var properties = {
-  'radius': 20,
-  'speed': 15,
-  'x': 500,
-  'y': 500,
-};
-var vertices = [];
-var vertices_amount = 23;
-
-window.onload = function(e){
+function repo_init(){
     canvas_init();
-    core_input_init({
+    core_input_binds_add({
       'keybinds': {
         27: {
           'todo': function(){
@@ -168,4 +151,21 @@ window.onload = function(e){
         },
       },
     });
+}
+
+function resize_logic(){
+    canvas_buffer.fillStyle = '#fff';
+    canvas_buffer.lineJoin = 'round';
+    canvas_buffer.strokeStyle = '#fff';
+
+    randomize();
+}
+
+var properties = {
+  'radius': 20,
+  'speed': 15,
+  'x': 500,
+  'y': 500,
 };
+var vertices = [];
+var vertices_amount = 23;
