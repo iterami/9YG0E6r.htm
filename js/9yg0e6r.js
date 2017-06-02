@@ -14,11 +14,6 @@ function draw_logic(){
               'x': vertices[vertex]['dx'],
               'y': vertices[vertices[vertex]['parent']]['dy'],
             },
-          ],
-        });
-        canvas_draw_path({
-          'style': 'stroke',
-          'vertices': [
             {
               'type': 'moveTo',
               'x': vertices[vertex]['dx'],
