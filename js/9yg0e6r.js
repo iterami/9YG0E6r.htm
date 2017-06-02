@@ -14,6 +14,11 @@ function draw_logic(){
               'x': vertices[vertex]['dx'],
               'y': vertices[vertices[vertex]['parent']]['dy'],
             },
+          ],
+        });
+        canvas_draw_path({
+          'style': 'stroke',
+          'vertices': [
             {
               'type': 'moveTo',
               'x': vertices[vertex]['dx'],
@@ -42,13 +47,12 @@ function draw_logic(){
 
 function logic(){
     for(var vertex in vertices){
-        vertices[vertex]['loop'] += vertices[vertex]['speed'];
-        if(vertices[vertex]['loop'] > 359){
-            vertices[vertex]['loop'] -= 360;
-
-        }else if(vertices[vertex]['loop'] < 0){
-            vertices[vertex]['loop'] += 360;
-        }
+        vertices[vertex]['loop'] = math_clamp({
+          'max': 360,
+          'min': 0,
+          'value': vertices[vertex]['loop'] + vertices[vertex]['speed'],
+          'wrap': true,
+        });
 
         var rotation = vertices[vertex]['loop'] * math_degree;
 
