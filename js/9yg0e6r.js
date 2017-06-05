@@ -100,15 +100,6 @@ function randomize(){
 function repo_init(){
     core_events_bind({
       'keybinds': {
-        27: {
-          'todo': function(){
-              canvas_buffer.lineWidth = 1;
-              if(vertices_amount !== 23){
-                vertices_amount = 23;
-                randomize();
-              }
-          },
-        },
         65: {
           'solo': true,
           'todo': function(){
