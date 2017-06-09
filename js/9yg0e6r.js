@@ -99,9 +99,6 @@ function randomize(){
 
 function repo_init(){
     core_repo_init({
-      'title': '9YG0E6r.htm',
-    });
-    core_events_bind({
       'keybinds': {
         65: {
           'solo': true,
@@ -142,6 +139,7 @@ function repo_init(){
           'todo': randomize,
         },
       },
+      'title': '9YG0E6r.htm',
     });
     canvas_init();
 }
