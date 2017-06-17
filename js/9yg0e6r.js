@@ -99,6 +99,7 @@ function randomize(){
 
 function repo_init(){
     core_repo_init({
+      'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Restart>',
       'keybinds': {
         65: {
           'solo': true,
@@ -131,11 +132,6 @@ function repo_init(){
           },
         },
         'all': {
-          'todo': randomize,
-        },
-      },
-      'mousebinds': {
-        'mousedown': {
           'todo': randomize,
         },
       },
