@@ -31,18 +31,6 @@ function draw_logic(){
           ],
         });
     }
-
-    // Draw vertices_amount and lineWidth.
-    canvas_buffer.fillText(
-      vertices_amount,
-      0,
-      25
-    );
-    canvas_buffer.fillText(
-      canvas_buffer.lineWidth,
-      0,
-      50
-    );
 }
 
 function logic(){
@@ -67,6 +55,13 @@ function logic(){
           + vertices[vertex]['radius']
           * Math.sin(rotation);
     }
+
+    core_ui_update({
+      'ids': {
+        'vertices': vertices_amount,
+        'width': canvas_buffer.lineWidth,
+      },
+    });
 }
 
 function randomize(){
@@ -136,12 +131,12 @@ function repo_init(){
         },
       },
       'title': '9YG0E6r.htm',
+      'ui': '<input id=ui-vertices>Vertices<br><input id=ui-width>Width',
     });
     canvas_init();
 }
 
 function resize_logic(){
-    canvas_buffer.fillStyle = '#fff';
     canvas_buffer.lineJoin = 'round';
     canvas_buffer.strokeStyle = '#fff';
 
