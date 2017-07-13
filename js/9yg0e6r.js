@@ -1,18 +1,18 @@
 'use strict';
 
 function draw_logic(){
-    for(var vertex in vertices){
+    for(var entity in core_entities){
         canvas_draw_path({
           'style': 'stroke',
           'vertices': [
             {
               'type': 'moveTo',
-              'x': vertices[vertex]['dx'],
-              'y': vertices[vertex]['dy'],
+              'x': core_entities[entity]['dx'],
+              'y': core_entities[entity]['dy'],
             },
             {
-              'x': vertices[vertex]['dx'],
-              'y': vertices[vertices[vertex]['parent']]['dy'],
+              'x': core_entities[entity]['dx'],
+              'y': core_entities[core_entities[entity]['parent']]['dy'],
             },
           ],
         });
@@ -21,12 +21,12 @@ function draw_logic(){
           'vertices': [
             {
               'type': 'moveTo',
-              'x': vertices[vertex]['dx'],
-              'y': vertices[vertices[vertex]['parent']]['dy'],
+              'x': core_entities[entity]['dx'],
+              'y': core_entities[core_entities[entity]['parent']]['dy'],
             },
             {
-              'x': vertices[vertices[vertex]['parent']]['dx'],
-              'y': vertices[vertices[vertex]['parent']]['dy'],
+              'x': core_entities[core_entities[entity]['parent']]['dx'],
+              'y': core_entities[core_entities[entity]['parent']]['dy'],
             },
           ],
         });
@@ -34,25 +34,25 @@ function draw_logic(){
 }
 
 function logic(){
-    for(var vertex in vertices){
-        vertices[vertex]['loop'] = math_clamp({
+    for(var vertex in core_entities){
+        core_entities[vertex]['loop'] = math_clamp({
           'max': 360,
           'min': 0,
-          'value': vertices[vertex]['loop'] + vertices[vertex]['speed'],
+          'value': core_entities[vertex]['loop'] + core_entities[vertex]['speed'],
           'wrap': true,
         });
 
-        var rotation = vertices[vertex]['loop'] * math_degree;
+        var rotation = core_entities[vertex]['loop'] * math_degree;
 
-        vertices[vertex]['dx'] =
+        core_entities[vertex]['dx'] =
           canvas_x
-          + vertices[vertex]['x']
-          + vertices[vertex]['radius']
+          + core_entities[vertex]['x']
+          + core_entities[vertex]['radius']
           * Math.cos(rotation);
-        vertices[vertex]['dy'] =
+        core_entities[vertex]['dy'] =
           canvas_y
-          + vertices[vertex]['y']
-          + vertices[vertex]['radius']
+          + core_entities[vertex]['y']
+          + core_entities[vertex]['radius']
           * Math.sin(rotation);
     }
 
@@ -65,31 +65,43 @@ function logic(){
 }
 
 function randomize(){
-    vertices.length = 0;
+    core_entity_remove_all();
 
     var loop_counter = vertices_amount - 1;
+    var first_id = false;
+    var parent_id = '';
     do{
-        vertices.push({
-          'dx': 0,
-          'dy': 0,
-          'loop': core_random_integer({
-            'max': 360,
-          }),
-          'parent': vertices_amount - loop_counter,
-          'radius': Math.random() * properties['radius'] + 5,
-          'speed': core_random_integer({
-            'max': properties['speed'],
-          }) - properties['speed'] / 2,
-          'x': core_random_integer({
-            'max': properties['x'],
-          }) - properties['x'] / 2,
-          'y': core_random_integer({
-            'max': properties['y'],
-          }) - properties['y'] / 2,
+        var this_id = core_uid();
+        if(!first_id){
+            first_id = this_id;
+        }
+
+        core_entity_create({
+          'id': this_id,
+          'properties': {
+            'dx': 0,
+            'dy': 0,
+            'loop': core_random_integer({
+              'max': 360,
+            }),
+            'parent': parent_id,
+            'radius': Math.random() * properties['radius'] + 5,
+            'speed': core_random_integer({
+              'max': properties['speed'],
+            }) - properties['speed'] / 2,
+            'x': core_random_integer({
+              'max': properties['x'],
+            }) - properties['x'] / 2,
+            'y': core_random_integer({
+              'max': properties['y'],
+            }) - properties['y'] / 2,
+          },
         });
+
+        parent_id = this_id;
     }while(loop_counter--);
 
-    vertices[vertices_amount - 1]['parent'] = 0;
+    core_entities[first_id]['parent'] = parent_id;
 }
 
 function repo_init(){
@@ -149,5 +161,4 @@ var properties = {
   'x': 500,
   'y': 500,
 };
-var vertices = [];
 var vertices_amount = 23;
