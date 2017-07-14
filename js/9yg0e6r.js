@@ -58,7 +58,6 @@ function logic(){
 
     core_ui_update({
       'ids': {
-        'vertices': vertices_amount,
         'width': canvas_buffer.lineWidth,
       },
     });
@@ -67,7 +66,9 @@ function logic(){
 function randomize(){
     core_entity_remove_all();
 
-    var loop_counter = vertices_amount - 1;
+    canvas_buffer.strokeStyle = core_storage_data['color-positive'];
+
+    var loop_counter = core_storage_data['vertices'] - 1;
     var first_id = false;
     var parent_id = '';
     do{
@@ -106,9 +107,9 @@ function randomize(){
 
 function repo_init(){
     core_repo_init({
-      'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Restart>',
+      'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Randomize>',
       'keybinds': {
-        65: {
+        83: {
           'solo': true,
           'todo': function(){
               canvas_buffer.lineWidth = Math.max(
@@ -117,42 +118,25 @@ function repo_init(){
               );
           },
         },
-        68: {
+        87: {
           'solo': true,
           'todo': function(){
               canvas_buffer.lineWidth += 1;
           },
         },
-        83: {
-          'todo': function(){
-              vertices_amount = Math.max(
-                vertices_amount - 1,
-                2
-              );
-              randomize();
-          },
-        },
-        87: {
-          'todo': function(){
-              vertices_amount += 1;
-              randomize();
-          },
-        },
-        'all': {
-          'todo': randomize,
-        },
       },
+      'storage': {
+        'vertices': 23,
+      },
+      'storage-menu': '<table><tr><td><input id=vertices><td>Vertices</table>',
       'title': '9YG0E6r.htm',
-      'ui': '<input id=ui-vertices>Vertices<br><input id=ui-width>Width',
+      'ui': '<input id=ui-width>Width',
     });
     canvas_init();
-
-    randomize();
 }
 
 function resize_logic(){
     canvas_buffer.lineJoin = 'round';
-    canvas_buffer.strokeStyle = '#fff';
 }
 
 var properties = {
@@ -161,4 +145,3 @@ var properties = {
   'x': 500,
   'y': 500,
 };
-var vertices_amount = 23;
