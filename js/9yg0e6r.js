@@ -151,8 +151,6 @@ function repo_init(){
 function resize_logic(){
     canvas_buffer.lineJoin = 'round';
     canvas_buffer.strokeStyle = '#fff';
-
-    randomize();
 }
 
 var properties = {
