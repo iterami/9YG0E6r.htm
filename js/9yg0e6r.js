@@ -130,7 +130,7 @@ function repo_init(){
       },
       'storage-menu': '<table><tr><td><input id=vertices><td>Vertices</table>',
       'title': '9YG0E6r.htm',
-      'ui': '<input id=ui-width>Width',
+      'ui': 'Width: <span id=ui-width></span>',
     });
     canvas_init();
 }
