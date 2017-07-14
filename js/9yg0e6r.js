@@ -146,6 +146,8 @@ function repo_init(){
       'ui': '<input id=ui-vertices>Vertices<br><input id=ui-width>Width',
     });
     canvas_init();
+
+    randomize();
 }
 
 function resize_logic(){
