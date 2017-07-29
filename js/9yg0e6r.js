@@ -65,6 +65,14 @@ function logic(){
 
 function repo_init(){
     core_repo_init({
+      'entities': {
+        'vertex': {
+          'properties': {
+            'dx': 0,
+            'dy': 0,
+          },
+        },
+      },
       'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Randomize>',
       'keybinds': {
         83: {

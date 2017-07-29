@@ -21,8 +21,6 @@ function randomize(){
         core_entity_create({
           'id': this_id,
           'properties': {
-            'dx': 0,
-            'dy': 0,
             'loop': core_random_integer({
               'max': 360,
             }),
@@ -38,6 +36,9 @@ function randomize(){
               'max': properties['y'],
             }) - properties['y'] / 2,
           },
+          'types': [
+            'vertex',
+          ],
         });
 
         parent_id = this_id;
