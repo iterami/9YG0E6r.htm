@@ -1,12 +1,6 @@
 'use strict';
 
 function load_data(){
-    randomize();
-}
-
-function randomize(){
-    core_entity_remove_all();
-
     canvas_buffer.strokeStyle = core_storage_data['color-positive'];
 
     var loop_counter = core_storage_data['vertices'] - 1;
