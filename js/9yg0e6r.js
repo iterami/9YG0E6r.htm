@@ -97,9 +97,13 @@ function repo_init(){
         },
       },
       'storage': {
+        'radius': 23,
+        'range-x': 500,
+        'range-y': 500,
+        'speed': 15,
         'vertices': 23,
       },
-      'storage-menu': '<table><tr><td><input id=vertices><td>Vertices</table>',
+      'storage-menu': '<table><tr><td><input id=radius><td>Radius<tr><td><input id=range-x><td>Range X<tr><td><input id=range-y><td>Range Y<tr><td><input id=speed><td>Speed<tr><td><input id=vertices><td>Vertices</table>',
       'title': '9YG0E6r.htm',
       'ui': 'Width: <span id=ui-width></span>',
     });
@@ -109,10 +113,3 @@ function repo_init(){
 function resize_logic(){
     canvas_buffer.lineJoin = 'round';
 }
-
-var properties = {
-  'radius': 20,
-  'speed': 15,
-  'x': 500,
-  'y': 500,
-};
