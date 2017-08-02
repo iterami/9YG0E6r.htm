@@ -1,36 +1,41 @@
 'use strict';
 
 function draw_logic(){
-    for(var entity in core_entities){
-        canvas_draw_path({
-          'style': 'stroke',
-          'vertices': [
-            {
-              'type': 'moveTo',
-              'x': core_entities[entity]['dx'],
-              'y': core_entities[entity]['dy'],
-            },
-            {
-              'x': core_entities[entity]['dx'],
-              'y': core_entities[core_entities[entity]['parent']]['dy'],
-            },
-          ],
-        });
-        canvas_draw_path({
-          'style': 'stroke',
-          'vertices': [
-            {
-              'type': 'moveTo',
-              'x': core_entities[entity]['dx'],
-              'y': core_entities[core_entities[entity]['parent']]['dy'],
-            },
-            {
-              'x': core_entities[core_entities[entity]['parent']]['dx'],
-              'y': core_entities[core_entities[entity]['parent']]['dy'],
-            },
-          ],
-        });
-    }
+    core_group_modify({
+      'groups': [
+        'canvas',
+      ],
+      'todo': function(entity){
+          canvas_draw_path({
+            'style': 'stroke',
+            'vertices': [
+              {
+                'type': 'moveTo',
+                'x': core_entities[entity]['dx'],
+                'y': core_entities[entity]['dy'],
+              },
+              {
+                'x': core_entities[entity]['dx'],
+                'y': core_entities[core_entities[entity]['parent']]['dy'],
+              },
+            ],
+          });
+          canvas_draw_path({
+            'style': 'stroke',
+            'vertices': [
+              {
+                'type': 'moveTo',
+                'x': core_entities[entity]['dx'],
+                'y': core_entities[core_entities[entity]['parent']]['dy'],
+              },
+              {
+                'x': core_entities[core_entities[entity]['parent']]['dx'],
+                'y': core_entities[core_entities[entity]['parent']]['dy'],
+              },
+            ],
+          });
+      },
+    });
 }
 
 function logic(){
