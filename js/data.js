@@ -19,7 +19,7 @@ function load_data(){
               'max': 360,
             }),
             'parent': parent_id,
-            'radius': Math.random() * core_storage_data['radius'] + 5,
+            'radius': Math.random() * core_storage_data['radius'],
             'speed': core_random_integer({
               'max': core_storage_data['speed'],
             }) - core_storage_data['speed'] / 2,
