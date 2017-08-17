@@ -58,12 +58,6 @@ function logic(){
           + core_entities[vertex]['y']
           + core_entities[vertex]['radius'] * Math.sin(rotation);
     }
-
-    core_ui_update({
-      'ids': {
-        'width': canvas_buffer.lineWidth,
-      },
-    });
 }
 
 function repo_init(){
@@ -77,37 +71,16 @@ function repo_init(){
         },
       },
       'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Randomize>',
-      'keybinds': {
-        83: {
-          'solo': true,
-          'todo': function(){
-              canvas_buffer.lineWidth = Math.max(
-                canvas_buffer.lineWidth - 1,
-                1
-              );
-          },
-        },
-        87: {
-          'solo': true,
-          'todo': function(){
-              canvas_buffer.lineWidth += 1;
-          },
-        },
-      },
       'storage': {
         'radius': 23,
         'range-x': 500,
         'range-y': 500,
         'speed': 15,
         'vertices': 23,
+        'width': 1,
       },
-      'storage-menu': '<table><tr><td><input id=radius><td>Radius<tr><td><input id=range-x><td>Range X<tr><td><input id=range-y><td>Range Y<tr><td><input id=speed><td>Speed<tr><td><input id=vertices><td>Vertices</table>',
+      'storage-menu': '<table><tr><td><input id=radius><td>Radius<tr><td><input id=range-x><td>Range X<tr><td><input id=range-y><td>Range Y<tr><td><input id=speed><td>Speed<tr><td><input id=vertices><td>Vertices<tr><td><input id=width><td>Width</table>',
       'title': '9YG0E6r.htm',
-      'ui': 'Width: <span id=ui-width></span>',
     });
     canvas_init();
-}
-
-function resize_logic(){
-    canvas_buffer.lineJoin = 'round';
 }

@@ -1,7 +1,13 @@
 'use strict';
 
 function load_data(){
-    canvas_buffer.strokeStyle = core_storage_data['color-positive'];
+    canvas_setproperties({
+      'properties': {
+        'lineJoin': 'round',
+        'lineWidth': core_storage_data['width'],
+        'strokeStyle': core_storage_data['color-positive'],
+      },
+    });
 
     var loop_counter = core_storage_data['vertices'] - 1;
     var first_id = false;
