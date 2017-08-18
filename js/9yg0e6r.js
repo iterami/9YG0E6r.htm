@@ -70,7 +70,17 @@ function repo_init(){
           },
         },
       },
-      'info': '<input onclick=canvas_setmode({newgame:true}) type=button value=Randomize>',
+      'info': '<input id=randomize type=button value=Randomize>',
+      'info-events': {
+        'randomize': {
+          'todo': function(){
+              canvas_setmode({
+                'newgame': true,
+              });
+          },
+          'type': 'onclick',
+        },
+      },
       'storage': {
         'radius': 23,
         'range-x': 500,
