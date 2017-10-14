@@ -50,11 +50,11 @@ function logic(){
         var rotation = core_entities[vertex]['loop'] * math_degree;
 
         core_entities[vertex]['dx'] =
-          canvas_x
+          canvas_properties['width-half']
           + core_entities[vertex]['x']
           + core_entities[vertex]['radius'] * Math.cos(rotation);
         core_entities[vertex]['dy'] =
-          canvas_y
+          canvas_properties['height-half']
           + core_entities[vertex]['y']
           + core_entities[vertex]['radius'] * Math.sin(rotation);
     }
