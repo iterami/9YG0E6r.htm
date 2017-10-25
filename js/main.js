@@ -70,16 +70,16 @@ function repo_init(){
           },
         },
       },
-      'info': '<input id=randomize type=button value=Randomize>',
-      'info-events': {
+      'events': {
         'randomize': {
-          'todo': function(){
+          'onclick': function(){
               canvas_setmode({
                 'newgame': true,
               });
           },
         },
       },
+      'info': '<input id=randomize type=button value=Randomize>',
       'storage': {
         'radius': 23,
         'range-x': 500,
