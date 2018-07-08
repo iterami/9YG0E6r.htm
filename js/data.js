@@ -9,11 +9,11 @@ function load_data(){
       },
     });
 
-    var loop_counter = core_storage_data['vertices'] - 1;
-    var first_id = false;
-    var parent_id = '';
+    let loop_counter = core_storage_data['vertices'] - 1;
+    let first_id = false;
+    let parent_id = '';
     do{
-        var this_id = core_uid();
+        let this_id = core_uid();
         if(!first_id){
             first_id = this_id;
         }

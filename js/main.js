@@ -39,7 +39,7 @@ function draw_logic(){
 }
 
 function logic(){
-    for(var vertex in core_entities){
+    for(let vertex in core_entities){
         core_entities[vertex]['loop'] = core_clamp({
           'max': 360,
           'min': 0,
@@ -47,7 +47,7 @@ function logic(){
           'wrap': true,
         });
 
-        var rotation = core_entities[vertex]['loop'] * core_degree;
+        let rotation = core_entities[vertex]['loop'] * core_degree;
 
         core_entities[vertex]['dx'] =
           canvas_properties['width-half']
