@@ -13,7 +13,7 @@ function load_data(){
     let first_id = false;
     let parent_id = '';
     do{
-        let this_id = core_uid();
+        let this_id = loop_counter;
         if(!first_id){
             first_id = this_id;
         }
