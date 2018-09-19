@@ -13,13 +13,12 @@ function load_data(){
     let first_id = false;
     let parent_id = '';
     do{
-        let this_id = loop_counter;
         if(!first_id){
-            first_id = this_id;
+            first_id = loop_counter;
         }
 
         core_entity_create({
-          'id': this_id,
+          'id': loop_counter,
           'properties': {
             'loop': core_random_integer({
               'max': 360,
@@ -41,7 +40,7 @@ function load_data(){
           ],
         });
 
-        parent_id = this_id;
+        parent_id = loop_counter;
     }while(loop_counter--);
 
     core_entities[first_id]['parent'] = parent_id;
