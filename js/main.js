@@ -88,7 +88,12 @@ function repo_init(){
         'vertices': 23,
         'width': 1,
       },
-      'storage-menu': '<table><tr><td><input id=radius><td>Radius<tr><td><input id=range-x><td>Range X<tr><td><input id=range-y><td>Range Y<tr><td><input id=speed><td>Speed<tr><td><input id=vertices><td>Vertices<tr><td><input id=width><td>Width</table>',
+      'storage-menu': '<table><tr><td><input id=radius><td>Radius'
+        + '<tr><td><input id=range-x><td>Range X'
+        + '<tr><td><input id=range-y><td>Range Y'
+        + '<tr><td><input id=speed><td>Speed'
+        + '<tr><td><input id=vertices><td>Vertices'
+        + '<tr><td><input id=width><td>Width</table>',
       'title': '9YG0E6r.htm',
     });
     canvas_init();
