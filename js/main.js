@@ -47,7 +47,9 @@ function logic(){
           'wrap': true,
         });
 
-        let rotation = core_entities[vertex]['loop'] * core_degree;
+        let rotation = core_degrees_to_radians({
+          'degrees': core_entities[vertex]['loop'],
+        });
 
         core_entities[vertex]['dx'] =
           canvas_properties['width-half']
