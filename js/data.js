@@ -17,7 +17,7 @@ function load_data(){
             first_id = loop_counter;
         }
 
-        core_entity_create({
+        entity_create({
           'id': loop_counter,
           'properties': {
             'loop': core_random_integer({
@@ -43,5 +43,5 @@ function load_data(){
         parent_id = loop_counter;
     }while(loop_counter--);
 
-    core_entities[first_id]['parent'] = parent_id;
+    entity_entities[first_id]['parent'] = parent_id;
 }

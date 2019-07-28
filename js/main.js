@@ -1,7 +1,7 @@
 'use strict';
 
 function draw_logic(){
-    core_group_modify({
+    entity_group_modify({
       'groups': [
         'canvas',
       ],
@@ -11,12 +11,12 @@ function draw_logic(){
             'vertices': [
               {
                 'type': 'moveTo',
-                'x': core_entities[entity]['dx'],
-                'y': core_entities[entity]['dy'],
+                'x': entity_entities[entity]['dx'],
+                'y': entity_entities[entity]['dy'],
               },
               {
-                'x': core_entities[entity]['dx'],
-                'y': core_entities[core_entities[entity]['parent']]['dy'],
+                'x': entity_entities[entity]['dx'],
+                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
               },
             ],
           });
@@ -25,12 +25,12 @@ function draw_logic(){
             'vertices': [
               {
                 'type': 'moveTo',
-                'x': core_entities[entity]['dx'],
-                'y': core_entities[core_entities[entity]['parent']]['dy'],
+                'x': entity_entities[entity]['dx'],
+                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
               },
               {
-                'x': core_entities[core_entities[entity]['parent']]['dx'],
-                'y': core_entities[core_entities[entity]['parent']]['dy'],
+                'x': entity_entities[entity_entities[entity]['parent']]['dx'],
+                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
               },
             ],
           });
@@ -39,39 +39,31 @@ function draw_logic(){
 }
 
 function logic(){
-    for(let vertex in core_entities){
-        core_entities[vertex]['loop'] = math_clamp({
+    for(let vertex in entity_entities){
+        entity_entities[vertex]['loop'] = math_clamp({
           'max': 360,
           'min': 0,
-          'value': core_entities[vertex]['loop'] + core_entities[vertex]['speed'],
+          'value': entity_entities[vertex]['loop'] + entity_entities[vertex]['speed'],
           'wrap': true,
         });
 
         let rotation = math_degrees_to_radians({
-          'degrees': core_entities[vertex]['loop'],
+          'degrees': entity_entities[vertex]['loop'],
         });
 
-        core_entities[vertex]['dx'] =
+        entity_entities[vertex]['dx'] =
           canvas_properties['width-half']
-          + core_entities[vertex]['x']
-          + core_entities[vertex]['radius'] * Math.cos(rotation);
-        core_entities[vertex]['dy'] =
+          + entity_entities[vertex]['x']
+          + entity_entities[vertex]['radius'] * Math.cos(rotation);
+        entity_entities[vertex]['dy'] =
           canvas_properties['height-half']
-          + core_entities[vertex]['y']
-          + core_entities[vertex]['radius'] * Math.sin(rotation);
+          + entity_entities[vertex]['y']
+          + entity_entities[vertex]['radius'] * Math.sin(rotation);
     }
 }
 
 function repo_init(){
     core_repo_init({
-      'entities': {
-        'vertex': {
-          'properties': {
-            'dx': 0,
-            'dy': 0,
-          },
-        },
-      },
       'events': {
         'randomize': {
           'onclick': function(){
@@ -97,6 +89,13 @@ function repo_init(){
         + '<tr><td><input id=vertices><td>Vertices'
         + '<tr><td><input id=width><td>Width</table>',
       'title': '9YG0E6r.htm',
+    });
+    entity_set({
+      'properties': {
+        'dx': 0,
+        'dy': 0,
+      },
+      'type': 'vertex',
     });
     canvas_init();
 }
