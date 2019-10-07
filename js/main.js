@@ -66,14 +66,11 @@ function repo_init(){
     core_repo_init({
       'events': {
         'randomize': {
-          'onclick': function(){
-              canvas_setmode({
-                'newgame': true,
-              });
-          },
+          'onclick': core_repo_reset,
         },
       },
       'info': '<input id=randomize type=button value=Randomize>',
+      'reset': canvas_setmode,
       'storage': {
         'radius': 23,
         'range-x': 500,
