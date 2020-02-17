@@ -39,7 +39,7 @@ function draw_logic(){
 }
 
 function logic(){
-    for(let vertex in entity_entities){
+    for(const vertex in entity_entities){
         entity_entities[vertex]['loop'] = math_clamp({
           'max': 360,
           'min': 0,
@@ -47,7 +47,7 @@ function logic(){
           'wrap': true,
         });
 
-        let rotation = math_degrees_to_radians({
+        const rotation = math_degrees_to_radians({
           'degrees': entity_entities[vertex]['loop'],
         });
 
