@@ -1,6 +1,6 @@
 'use strict';
 
-function draw_logic(){
+function repo_drawlogic(){
     entity_group_modify({
       'groups': [
         'canvas',
@@ -38,7 +38,7 @@ function draw_logic(){
     });
 }
 
-function logic(){
+function repo_logic(){
     for(const vertex in entity_entities){
         entity_entities[vertex]['loop'] = math_clamp({
           'max': 360,
