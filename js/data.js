@@ -9,6 +9,10 @@ function load_data(){
       },
     });
 
+    const speed = core_random_integer({
+      'max': core_storage_data['speed'],
+    }) - core_storage_data['speed'] / 2;
+
     let loop_counter = core_storage_data['vertices'] - 1;
     let first_id = false;
     let parent_id = '';
@@ -25,9 +29,11 @@ function load_data(){
             }),
             'parent': parent_id,
             'radius': Math.random() * core_storage_data['radius'],
-            'speed': core_random_integer({
-              'max': core_storage_data['speed'],
-            }) - core_storage_data['speed'] / 2,
+            'speed': core_storage_data['speed-consistent']
+              ? speed
+              : core_random_integer({
+                'max': core_storage_data['speed'],
+              }) - core_storage_data['speed'] / 2,
             'x': core_random_integer({
               'max': core_storage_data['range-x'],
             }) - core_storage_data['range-x'] / 2,
