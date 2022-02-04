@@ -80,13 +80,13 @@ function repo_init(){
         'vertices': 23,
         'width': 1,
       },
-      'storage-menu': '<table><tr><td><input id=radius step=any type=number><td>Radius'
-        + '<tr><td><input id=range-x step=any type=number><td>Range X'
-        + '<tr><td><input id=range-y step=any type=number><td>Range Y'
-        + '<tr><td><input id=speed step=any type=number><td>Speed'
+      'storage-menu': '<table><tr><td><input class=mini id=radius step=any type=number><td>Radius'
+        + '<tr><td><input class=mini id=range-x step=any type=number><td>Range X'
+        + '<tr><td><input class=mini id=range-y step=any type=number><td>Range Y'
+        + '<tr><td><input class=mini id=speed step=any type=number><td>Speed'
         + '<tr><td><input id=speed-consistent type=checkbox><td>Speed Consistency'
-        + '<tr><td><input id=vertices min=2 step=any type=number><td>Vertices'
-        + '<tr><td><input id=width min=1 step=any type=number><td>Width</table>',
+        + '<tr><td><input class=mini id=vertices min=2 step=any type=number><td>Vertices'
+        + '<tr><td><input class=mini id=width min=1 step=any type=number><td>Width</table>',
       'title': '9YG0E6r.htm',
     });
     entity_set({
