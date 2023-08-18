@@ -14,11 +14,11 @@ function load_data(){
     }) - core_storage_data['speed'] / 2;
 
     let loop_counter = core_storage_data['vertices'] - 1;
-    let first_id = false;
+    let id = false;
     let parent_id = '';
     do{
-        if(!first_id){
-            first_id = loop_counter;
+        if(!id){
+            id = loop_counter;
         }
 
         entity_create({
@@ -49,7 +49,7 @@ function load_data(){
         parent_id = loop_counter;
     }while(loop_counter--);
 
-    entity_entities[first_id]['parent'] = parent_id;
+    entity_entities[id]['parent'] = parent_id;
 }
 
 function repo_drawlogic(){
