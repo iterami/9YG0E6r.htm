@@ -5,7 +5,7 @@ function load_data(){
       'properties': {
         'lineJoin': 'round',
         'lineWidth': core_storage_data['width'],
-        'strokeStyle': core_storage_data['color-positive'],
+        'strokeStyle': '#206620',
       },
     });
 
