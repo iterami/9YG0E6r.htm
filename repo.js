@@ -5,7 +5,7 @@ function load_data(){
       'properties': {
         'lineJoin': 'round',
         'lineWidth': core_storage_data['width'],
-        'strokeStyle': '#206620',
+        'strokeStyle': core_storage_data['color'],
       },
     });
 
@@ -124,6 +124,7 @@ function repo_init(){
       'info': '<input id=randomize type=button value=Randomize>',
       'reset': canvas_setmode,
       'storage': {
+        'color': '#206620',
         'radius': 23,
         'range-x': 500,
         'range-y': 500,
@@ -132,7 +133,8 @@ function repo_init(){
         'vertices': 23,
         'width': 1,
       },
-      'storage-menu': '<table><tr><td><input class=mini id=radius step=any type=number><td>Radius'
+      'storage-menu': '<table><tr><td><input id=color type=color><td>Color'
+        + '<tr><td><input class=mini id=radius step=any type=number><td>Radius'
         + '<tr><td><input class=mini id=range-x step=any type=number><td>Range X'
         + '<tr><td><input class=mini id=range-y step=any type=number><td>Range Y'
         + '<tr><td><input class=mini id=speed step=any type=number><td>Speed'
