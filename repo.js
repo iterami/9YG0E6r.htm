@@ -99,9 +99,7 @@ function repo_logic(){
           'wrap': true,
         });
 
-        const rotation = math_degrees_to_radians({
-          'degrees': entity_entities[vertex]['loop'],
-        });
+        const rotation = math_degrees_to_radians(entity_entities[vertex]['loop']);
 
         entity_entities[vertex]['dx'] =
           canvas_properties['width-half']
