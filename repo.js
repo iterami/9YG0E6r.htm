@@ -119,7 +119,7 @@ function repo_init(){
           'onclick': core_repo_reset,
         },
       },
-      'info': '<input id=randomize type=button value=Randomize>',
+      'info': '<button id=randomize type=button>Randomize</button>',
       'reset': canvas_setmode,
       'storage': {
         'color': '#206620',
