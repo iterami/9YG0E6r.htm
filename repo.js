@@ -2,11 +2,9 @@
 
 function load_data(){
     canvas_setproperties({
-      'properties': {
-        'lineJoin': 'round',
-        'lineWidth': core_storage_data['width'],
-        'strokeStyle': core_storage_data['color'],
-      },
+      'lineJoin': 'round',
+      'lineWidth': core_storage_data['width'],
+      'strokeStyle': core_storage_data['color'],
     });
 
     const speed = core_random_integer({
