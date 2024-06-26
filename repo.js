@@ -11,7 +11,7 @@ function load_data(){
       'max': core_storage_data['speed'],
     }) - core_storage_data['speed'] / 2;
 
-    let loop_counter = core_storage_data['vertices'] - 1;
+    let loop_counter = Math.floor(core_storage_data['vertices']) - 1;
     let id = false;
     let parent_id = '';
     do{
@@ -135,7 +135,7 @@ function repo_init(){
         + '<tr><td><input class=mini id=range-y step=any type=number><td>Range Y'
         + '<tr><td><input class=mini id=speed step=any type=number><td>Speed'
         + '<tr><td><input id=speed-consistent type=checkbox><td>Speed Consistency'
-        + '<tr><td><input class=mini id=vertices min=2 step=any type=number><td>Vertices'
+        + '<tr><td><input class=mini id=vertices min=2 step=1 type=number><td>Vertices'
         + '<tr><td><input class=mini id=width min=1 step=any type=number><td>Width</table>',
       'title': '9YG0E6r.htm',
     });
