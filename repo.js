@@ -59,29 +59,31 @@ function repo_drawlogic(){
           canvas_draw_path({
             'style': 'stroke',
             'vertices': [
-              {
-                'type': 'moveTo',
-                'x': entity_entities[entity]['dx'],
-                'y': entity_entities[entity]['dy'],
-              },
-              {
-                'x': entity_entities[entity]['dx'],
-                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
-              },
+              [
+                'moveTo',
+                entity_entities[entity]['dx'],
+                entity_entities[entity]['dy'],
+              ],
+              [
+                'lineTo',
+                entity_entities[entity]['dx'],
+                entity_entities[entity_entities[entity]['parent']]['dy'],
+              ],
             ],
           });
           canvas_draw_path({
             'style': 'stroke',
             'vertices': [
-              {
-                'type': 'moveTo',
-                'x': entity_entities[entity]['dx'],
-                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
-              },
-              {
-                'x': entity_entities[entity_entities[entity]['parent']]['dx'],
-                'y': entity_entities[entity_entities[entity]['parent']]['dy'],
-              },
+              [
+                'moveTo',
+                entity_entities[entity]['dx'],
+                entity_entities[entity_entities[entity]['parent']]['dy'],
+              ],
+              [
+                'lineTo',
+                entity_entities[entity_entities[entity]['parent']]['dx'],
+                entity_entities[entity_entities[entity]['parent']]['dy'],
+              ],
             ],
           });
       },
