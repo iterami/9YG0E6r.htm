@@ -61,13 +61,13 @@ function repo_drawlogic(){
             'vertices': [
               [
                 'moveTo',
-                entity_entities[entity]['dx'],
-                entity_entities[entity]['dy'],
+                entity['dx'],
+                entity['dy'],
               ],
               [
                 'lineTo',
-                entity_entities[entity]['dx'],
-                entity_entities[entity_entities[entity]['parent']]['dy'],
+                entity['dx'],
+                entity_entities[entity['parent']]['dy'],
               ],
             ],
           });
@@ -76,13 +76,13 @@ function repo_drawlogic(){
             'vertices': [
               [
                 'moveTo',
-                entity_entities[entity]['dx'],
-                entity_entities[entity_entities[entity]['parent']]['dy'],
+                entity['dx'],
+                entity_entities[entity['parent']]['dy'],
               ],
               [
                 'lineTo',
-                entity_entities[entity_entities[entity]['parent']]['dx'],
-                entity_entities[entity_entities[entity]['parent']]['dy'],
+                entity_entities[entity['parent']]['dx'],
+                entity_entities[entity['parent']]['dy'],
               ],
             ],
           });
