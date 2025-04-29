@@ -116,11 +116,10 @@ function repo_init(){
     core_repo_init({
       'events': {
         'randomize': {
-          'onclick': core_repo_reset,
+          'onclick': canvas_setmode,
         },
       },
       'info': '<button id=randomize type=button>Randomize</button>',
-      'reset': canvas_setmode,
       'storage': {
         'color': '#206620',
         'radius': 23,
