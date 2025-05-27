@@ -90,28 +90,6 @@ function repo_drawlogic(){
     });
 }
 
-function repo_logic(){
-    for(const vertex in entity_entities){
-        entity_entities[vertex]['loop'] = math_clamp({
-          'max': 360,
-          'min': 0,
-          'value': entity_entities[vertex]['loop'] + entity_entities[vertex]['speed'],
-          'wrap': true,
-        });
-
-        const rotation = math_degrees_to_radians(entity_entities[vertex]['loop']);
-
-        entity_entities[vertex]['dx'] =
-          canvas_properties['width-half']
-          + entity_entities[vertex]['x']
-          + entity_entities[vertex]['radius'] * Math.cos(rotation);
-        entity_entities[vertex]['dy'] =
-          canvas_properties['height-half']
-          + entity_entities[vertex]['y']
-          + entity_entities[vertex]['radius'] * Math.sin(rotation);
-    }
-}
-
 function repo_init(){
     core_repo_init({
       'events': {
@@ -148,4 +126,26 @@ function repo_init(){
       'type': 'vertex',
     });
     canvas_init();
+}
+
+function repo_logic(){
+    for(const vertex in entity_entities){
+        entity_entities[vertex]['loop'] = math_clamp({
+          'max': 360,
+          'min': 0,
+          'value': entity_entities[vertex]['loop'] + entity_entities[vertex]['speed'],
+          'wrap': true,
+        });
+
+        const rotation = math_degrees_to_radians(entity_entities[vertex]['loop']);
+
+        entity_entities[vertex]['dx'] =
+          canvas_properties['width-half']
+          + entity_entities[vertex]['x']
+          + entity_entities[vertex]['radius'] * Math.cos(rotation);
+        entity_entities[vertex]['dy'] =
+          canvas_properties['height-half']
+          + entity_entities[vertex]['y']
+          + entity_entities[vertex]['radius'] * Math.sin(rotation);
+    }
 }
