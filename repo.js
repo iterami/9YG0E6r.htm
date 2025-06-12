@@ -7,9 +7,7 @@ function load_data(){
       'strokeStyle': core_storage_data['color'],
     });
 
-    const speed = core_random_integer({
-      'max': core_storage_data['speed'],
-    }) - core_storage_data['speed'] / 2;
+    const speed = core_random_integer(core_storage_data['speed']) - core_storage_data['speed'] / 2;
 
     let loop_counter = Math.floor(core_storage_data['vertices']) - 1;
     let id = false;
@@ -22,22 +20,14 @@ function load_data(){
         entity_create({
           'id': loop_counter,
           'properties': {
-            'loop': core_random_integer({
-              'max': 360,
-            }),
+            'loop': core_random_integer(360),
             'parent': parent_id,
             'radius': Math.random() * core_storage_data['radius'],
             'speed': core_storage_data['speed-consistent']
               ? speed
-              : core_random_integer({
-                'max': core_storage_data['speed'],
-              }) - core_storage_data['speed'] / 2,
-            'x': core_random_integer({
-              'max': core_storage_data['range-x'],
-            }) - core_storage_data['range-x'] / 2,
-            'y': core_random_integer({
-              'max': core_storage_data['range-y'],
-            }) - core_storage_data['range-y'] / 2,
+              : core_random_integer(core_storage_data['speed']) - core_storage_data['speed'] / 2,
+            'x': core_random_integer(core_storage_data['range-x']) - core_storage_data['range-x'] / 2,
+            'y': core_random_integer(core_storage_data['range-y']) - core_storage_data['range-y'] / 2,
           },
           'types': [
             'vertex',
