@@ -3,13 +3,13 @@
 function load_data(){
     canvas_setproperties({
       'lineJoin': 'round',
-      'lineWidth': core_storage_data['width'],
-      'strokeStyle': core_storage_data['color'],
+      'lineWidth': core_storage_data.width,
+      'strokeStyle': core_storage_data.color,
     });
 
-    const speed = core_random_integer(core_storage_data['speed']) - core_storage_data['speed'] / 2;
+    const speed = core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2;
 
-    let loop_counter = Math.floor(core_storage_data['vertices']) - 1;
+    let loop_counter = Math.floor(core_storage_data.vertices) - 1;
     let id = false;
     let parent_id = '';
     do{
@@ -22,12 +22,12 @@ function load_data(){
           'properties': {
             'loop': core_random_integer(360),
             'parent': parent_id,
-            'radius': Math.random() * core_storage_data['radius'],
-            'speed': core_storage_data['speed-consistent']
+            'radius': Math.random() * core_storage_data.radius,
+            'speed': core_storage_data.speed_consistent
               ? speed
-              : core_random_integer(core_storage_data['speed']) - core_storage_data['speed'] / 2,
-            'x': core_random_integer(core_storage_data['range-x']) - core_storage_data['range-x'] / 2,
-            'y': core_random_integer(core_storage_data['range-y']) - core_storage_data['range-y'] / 2,
+              : core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2,
+            'x': core_random_integer(core_storage_data.range_x) - core_storage_data.range_x / 2,
+            'y': core_random_integer(core_storage_data.range_y) - core_storage_data.range_y / 2,
           },
           'types': [
             'vertex',
@@ -37,7 +37,7 @@ function load_data(){
         parent_id = loop_counter;
     }while(loop_counter--);
 
-    entity_entities[id]['parent'] = parent_id;
+    entity_entities[id].parent = parent_id;
 }
 
 function repo_drawlogic(){
@@ -51,13 +51,13 @@ function repo_drawlogic(){
             'vertices': [
               [
                 'moveTo',
-                entity['dx'],
-                entity['dy'],
+                entity.dx,
+                entity.dy,
               ],
               [
                 'lineTo',
-                entity['dx'],
-                entity_entities[entity['parent']]['dy'],
+                entity.dx,
+                entity_entities[entity.parent].dy,
               ],
             ],
           });
@@ -66,13 +66,13 @@ function repo_drawlogic(){
             'vertices': [
               [
                 'moveTo',
-                entity['dx'],
-                entity_entities[entity['parent']]['dy'],
+                entity.dx,
+                entity_entities[entity.parent].dy,
               ],
               [
                 'lineTo',
-                entity_entities[entity['parent']]['dx'],
-                entity_entities[entity['parent']]['dy'],
+                entity_entities[entity.parent].dx,
+                entity_entities[entity.parent].dy,
               ],
             ],
           });
@@ -91,19 +91,19 @@ function repo_init(){
       'storage': {
         'color': '#206620',
         'radius': 23,
-        'range-x': 500,
-        'range-y': 500,
+        'range_x': 500,
+        'range_y': 500,
         'speed': 15,
-        'speed-consistent': false,
+        'speed_consistent': false,
         'vertices': 23,
         'width': 1,
       },
       'storage-menu': '<table><tr><td><input id=color type=color><td>Color'
         + '<tr><td><input class=mini id=radius step=any type=number><td>Radius'
-        + '<tr><td><input class=mini id=range-x step=any type=number><td>Range X'
-        + '<tr><td><input class=mini id=range-y step=any type=number><td>Range Y'
+        + '<tr><td><input class=mini id=range_x step=any type=number><td>Range X'
+        + '<tr><td><input class=mini id=range_y step=any type=number><td>Range Y'
         + '<tr><td><input class=mini id=speed step=any type=number><td>Speed'
-        + '<tr><td><input id=speed-consistent type=checkbox><td>Speed Consistency'
+        + '<tr><td><input id=speed_consistent type=checkbox><td>Speed Consistency'
         + '<tr><td><input class=mini id=vertices min=2 step=1 type=number><td>Vertices'
         + '<tr><td><input class=mini id=width min=1 step=any type=number><td>Width</table>',
       'title': '9YG0E6r.htm',
@@ -120,22 +120,22 @@ function repo_init(){
 
 function repo_logic(){
     for(const vertex in entity_entities){
-        entity_entities[vertex]['loop'] = math_clamp({
+        entity_entities[vertex].loop = math_clamp({
           'max': 360,
           'min': 0,
-          'value': entity_entities[vertex]['loop'] + entity_entities[vertex]['speed'],
+          'value': entity_entities[vertex].loop + entity_entities[vertex].speed,
           'wrap': true,
         });
 
-        const rotation = math_degrees_to_radians(entity_entities[vertex]['loop']);
+        const rotation = math_degrees_to_radians(entity_entities[vertex].loop);
 
-        entity_entities[vertex]['dx'] =
-          canvas_properties['width-half']
-          + entity_entities[vertex]['x']
-          + entity_entities[vertex]['radius'] * Math.cos(rotation);
-        entity_entities[vertex]['dy'] =
-          canvas_properties['height-half']
-          + entity_entities[vertex]['y']
-          + entity_entities[vertex]['radius'] * Math.sin(rotation);
+        entity_entities[vertex].dx =
+          canvas_properties.width_half
+          + entity_entities[vertex].x
+          + entity_entities[vertex].radius * Math.cos(rotation);
+        entity_entities[vertex].dy =
+          canvas_properties.height_half
+          + entity_entities[vertex].y
+          + entity_entities[vertex].radius * Math.sin(rotation);
     }
 }
