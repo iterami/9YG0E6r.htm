@@ -98,7 +98,7 @@ function repo_init(){
         'vertices': 23,
         'width': 1,
       },
-      'storage-menu': '<table><tr><td><input id=color type=color><td>Color'
+      'storage_menu': '<table><tr><td><input id=color type=color><td>Color'
         + '<tr><td><input class=mini id=radius step=any type=number><td>Radius'
         + '<tr><td><input class=mini id=range_x step=any type=number><td>Range X'
         + '<tr><td><input class=mini id=range_y step=any type=number><td>Range Y'
