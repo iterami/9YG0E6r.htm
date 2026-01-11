@@ -1,45 +1,5 @@
 'use strict';
 
-function load_data(){
-    canvas_setproperties({
-      'lineJoin': 'round',
-      'lineWidth': core_storage_data.width,
-      'strokeStyle': core_storage_data.color,
-    });
-
-    const speed = core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2;
-
-    let loop_counter = Math.floor(core_storage_data.vertices) - 1;
-    let id = false;
-    let parent_id = '';
-    do{
-        if(!id){
-            id = loop_counter;
-        }
-
-        entity_create({
-          'id': loop_counter,
-          'properties': {
-            'loop': core_random_integer(360),
-            'parent': parent_id,
-            'radius': Math.random() * core_storage_data.radius,
-            'speed': core_storage_data.speed_consistent
-              ? speed
-              : core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2,
-            'x': core_random_integer(core_storage_data.range_x) - core_storage_data.range_x / 2,
-            'y': core_random_integer(core_storage_data.range_y) - core_storage_data.range_y / 2,
-          },
-          'types': [
-            'vertex',
-          ],
-        });
-
-        parent_id = loop_counter;
-    }while(loop_counter--);
-
-    entity_entities[id].parent = parent_id;
-}
-
 function repo_drawlogic(){
     entity_group_modify({
       'groups': [
@@ -116,6 +76,46 @@ function repo_init(){
       'type': 'vertex',
     });
     canvas_init();
+}
+
+function repo_load(){
+    canvas_setproperties({
+      'lineJoin': 'round',
+      'lineWidth': core_storage_data.width,
+      'strokeStyle': core_storage_data.color,
+    });
+
+    const speed = core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2;
+
+    let loop_counter = Math.floor(core_storage_data.vertices) - 1;
+    let id = false;
+    let parent_id = '';
+    do{
+        if(!id){
+            id = loop_counter;
+        }
+
+        entity_create({
+          'id': loop_counter,
+          'properties': {
+            'loop': core_random_integer(360),
+            'parent': parent_id,
+            'radius': Math.random() * core_storage_data.radius,
+            'speed': core_storage_data.speed_consistent
+              ? speed
+              : core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2,
+            'x': core_random_integer(core_storage_data.range_x) - core_storage_data.range_x / 2,
+            'y': core_random_integer(core_storage_data.range_y) - core_storage_data.range_y / 2,
+          },
+          'types': [
+            'vertex',
+          ],
+        });
+
+        parent_id = loop_counter;
+    }while(loop_counter--);
+
+    entity_entities[id].parent = parent_id;
 }
 
 function repo_logic(){
