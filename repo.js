@@ -1,42 +1,44 @@
 'use strict';
 
+function draw_entity(entity){
+    canvas_draw_path({
+      'style': 'stroke',
+      'vertices': [
+        [
+          'moveTo',
+          entity.dx,
+          entity.dy,
+        ],
+        [
+          'lineTo',
+          entity.dx,
+          entity_entities[entity.parent].dy,
+        ],
+      ],
+    });
+    canvas_draw_path({
+      'style': 'stroke',
+      'vertices': [
+        [
+          'moveTo',
+          entity.dx,
+          entity_entities[entity.parent].dy,
+        ],
+        [
+          'lineTo',
+          entity_entities[entity.parent].dx,
+          entity_entities[entity.parent].dy,
+        ],
+      ],
+    });
+}
+
 function repo_drawlogic(){
     entity_group_modify({
       'groups': [
         'canvas',
       ],
-      'todo': function(entity){
-          canvas_draw_path({
-            'style': 'stroke',
-            'vertices': [
-              [
-                'moveTo',
-                entity.dx,
-                entity.dy,
-              ],
-              [
-                'lineTo',
-                entity.dx,
-                entity_entities[entity.parent].dy,
-              ],
-            ],
-          });
-          canvas_draw_path({
-            'style': 'stroke',
-            'vertices': [
-              [
-                'moveTo',
-                entity.dx,
-                entity_entities[entity.parent].dy,
-              ],
-              [
-                'lineTo',
-                entity_entities[entity.parent].dx,
-                entity_entities[entity.parent].dy,
-              ],
-            ],
-          });
-      },
+      'todo': draw_entity,
     });
 }
 
