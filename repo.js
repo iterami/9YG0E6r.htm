@@ -49,7 +49,7 @@ function repo_init(){
           'onclick': canvas_setmode,
         },
       },
-      'info': '<button id=randomize type=button>Randomize</button>',
+      'info': '<button class=medium id=randomize type=button>Randomize</button>',
       'storage': {
         'color': '#206620',
         'radius': 23,
