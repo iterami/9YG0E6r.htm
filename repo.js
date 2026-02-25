@@ -88,20 +88,12 @@ function repo_load(){
     });
 
     const speed = core_random_integer(core_storage_data.speed) - core_storage_data.speed / 2;
-
-    let loop_counter = Math.floor(core_storage_data.vertices) - 1;
-    let id = false;
-    let parent_id = '';
-    do{
-        if(!id){
-            id = loop_counter;
-        }
-
+    for(let i = 0; i < core_storage_data.vertices; i++){
         entity_create({
-          'id': loop_counter,
+          'id': i,
           'properties': {
             'loop': core_random_integer(360),
-            'parent': parent_id,
+            'parent': i - 1,
             'radius': Math.random() * core_storage_data.radius,
             'speed': core_storage_data.speed_consistent
               ? speed
@@ -113,11 +105,8 @@ function repo_load(){
             'vertex',
           ],
         });
-
-        parent_id = loop_counter;
-    }while(loop_counter--);
-
-    entity_entities[id].parent = parent_id;
+    }
+    entity_entities[0].parent = core_storage_data.vertices - 1;
 }
 
 function repo_logic(){
