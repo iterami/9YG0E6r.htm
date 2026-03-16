@@ -67,7 +67,7 @@ function repo_init(){
         + '<tr><td><input class=mini id=speed step=any type=number><td>Speed'
         + '<tr><td class=right><input id=speed_consistent type=checkbox><td><label for=speed_consistent>Speed Consistency</label>'
         + '<tr><td><input class=mini id=vertices min=2 step=1 type=number><td>Vertices'
-        + '<tr><td><input class=mini id=width min=1 step=any type=number><td>Width</table>',
+        + '<tr><td><input class=mini id=width min=.1 step=any type=number><td>Width</table>',
       'title': '9YG0E6r.htm',
     });
     entity_set({
