@@ -58,7 +58,7 @@ function repo_init(){
         'speed': 15,
         'speed_consistent': false,
         'vertices': 23,
-        'width': 1,
+        'width': 2,
       },
       'storage_menu': '<table><tr><td><input id=color type=color><td>Color'
         + '<tr><td><input class=mini id=radius step=any type=number><td>Radius'
